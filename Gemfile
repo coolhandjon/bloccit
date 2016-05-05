@@ -14,6 +14,14 @@ source 'https://rubygems.org'
    gem 'sqlite3'
  end
 
+ group :development, :test do
+   gem 'rspec-rails', '~> 3.0'
+ end
+
+ group :test do
+   gem "nyan-cat-formatter"
+ end
+
  # Use SCSS for stylesheets
  gem 'sass-rails', '~> 5.0'
  # Use Uglifier as compressor for JavaScript assets

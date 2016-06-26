@@ -79,7 +79,9 @@ RSpec.describe PostsController, type: :controller do
 
     it "assigns post to be updated to @post" do
       get :edit, {id: my_post.id}
+
       post_instance = assigns(:post)
+
       expect(post_instance.id).to eq my_post.id
       expect(post_instance.title).to eq my_post.title
       expect(post_instance.body).to eq my_post.body
@@ -94,12 +96,12 @@ RSpec.describe PostsController, type: :controller do
       put :update, id: my_post.id, post: {title: new_title, body: new_body}
 
       updated_post = assigns(:post)
-      expect(update_post.id).to eq my_post.id
-      expect(update_post.title).to eq new_title
+      expect(updated_post.id).to eq my_post.id
+      expect(updated_post.title).to eq new_title
       expect(updated_post.body).to eq new_body
     end
 
-    it "redirects to the updated psot" do
+    it "redirects to the updated post" do
       new_title = RandomData.random_sentence
       new_body = RandomData.random_paragraph
 
@@ -108,4 +110,16 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe "DELETE destroy" do
+    it "deletes the post" do
+      delete :destroy, {id: my_post.id}
+      count = Post.where({id: my_post.id}).size
+      expect(count).to eq 0
+    end
+
+    it "redirects to posts index" do
+      delete :destroy, {id: my_post.id}
+      expect(response).to redirect_to posts_path
+    end
+  end
 end

@@ -5,6 +5,9 @@ source 'https://rubygems.org'
 
  gem 'bootstrap-sass'
 
+ # Used for encrypting User passwords
+ gem 'bcrypt'
+
  # #1
  group :production do
    gem 'pg'

@@ -38,6 +38,7 @@ posts = Post.all
 
 100.times do
   Comment.create!(
+    user: users.sample,
     post: posts.sample,
     body: RandomData.random_paragraph
   )
@@ -48,10 +49,10 @@ end
 #  body: "This is a unique body."
 #)
 
-Comment.find_or_create_by!(
-  post_id: 51,
-  body: "This is a unique comment."
-)
+# Comment.find_or_create_by!(
+#  post_id: 51,
+#  body: "This is a unique comment."
+#)
 
 5.times do
   Advertisement.create!(

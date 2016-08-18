@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
   let(:my_topic) { create(:topic) }
+  let(:my_private_topic) { create(:topic, public: false) }
 
   describe "GET index" do
     it "returns http success" do
